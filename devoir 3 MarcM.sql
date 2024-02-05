@@ -72,33 +72,33 @@ GROUP BY
     job_lvl;
     
 -- Exercise 6 Liste des employes par maison d'edition
-SELECT 
-    p.pub_name AS PublishingHouse,
-    COUNT(e.emp_id) AS NumberOfEmployees
-FROM 
-    publishers p
-LEFT JOIN 
-    employees e ON p.pub_id = e.pub_id
-GROUP BY 
-    p.pub_name;
-
--- Exercise 7 Salaires horaires moyens des employes par maison d'edition
 SELECT
     p.pub_name AS PublishingHouse,
-    AVG(e.salary) AS AverageHourlySalary
+    COUNT(e.emp_id) AS NumberOfEmployees
 FROM
     employees e
 JOIN
     publishers p ON e.pub_id = p.pub_id
-
 GROUP BY
     p.pub_name;
-    
--- Exercise 8 Effectif(nombre) d'employées de niveau SEINIOR par maison d'edition
-SELECT p.pub_name AS PublishingHouse,
-COUNT(*) AS SeniorEmployeeCount
+
+
+-- Exercise 7 Salaires horaires moyens des employes par maison d'edition
+SELECT p.pub_name AS maison_edition, AVG(e.minit) AS moyenne_minit
 FROM employees e
 JOIN publishers p ON e.pub_id = p.pub_id
-WHERE e.job_lvl = 'SEINIOR'
 GROUP BY p.pub_name;
+    
+-- Exercise 8 Effectif(nombre) d'employées de niveau SEINIOR par maison d'edition
+SELECT 
+    p.pub_name AS PublishingHouse,
+    COUNT(e.emp_id) AS NumberOfSeniorEmployees
+FROM 
+    employees e
+JOIN 
+    publishers p ON e.pub_id = p.pub_id
+WHERE 
+    e.job_lvl = 'SEINIOR'
+GROUP BY 
+    p.pub_name
 
