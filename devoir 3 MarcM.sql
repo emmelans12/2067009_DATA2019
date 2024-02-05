@@ -10,12 +10,12 @@ SELECT
 FROM 
     authors a
 JOIN 
-    publishers p ON a.city = p.city
-ORDER BY 
-    a.city;
+    publishers p ON a.city = p.city;
+
     
 -- exercise 2 La liste des paires (auteur, éditeur) demeurant dans la même ville, incluant 
 -- aussi les auteurs qui ne répondent pas à ce critère.
+
 SELECT 
     a.au_fname AS AuthorFirstName, 
     a.au_lname AS AuthorLastName, 
@@ -60,6 +60,26 @@ SELECT
     a.au_fname AS MatchingEntityFirstName,
     'Author' AS MatchingEntityType
 FROM publishers p
-LEFT JOIN authors a ON p.city = a.city
+LEFT JOIN authors a ON p.city = a.city;
 
--- Exercise 5
+-- Exercise 5 Effectif(nombre) d'employes par niveau d'experience
+SELECT 
+    job_lvl AS ExperienceLevel, 
+    COUNT(emp_id) AS NumberOfEmployees
+FROM 
+    employees
+GROUP BY 
+    job_lvl;
+    
+-- Exercise 6 Liste des employes par maison d'edition
+SELECT 
+    p.pub_name AS PublishingHouse,
+    COUNT(e.emp_id) AS NumberOfEmployees
+FROM 
+    publishers p
+LEFT JOIN 
+    employees e ON p.pub_id = e.pub_id
+GROUP BY 
+    p.pub_name
+
+
