@@ -1,4 +1,4 @@
--- devoir 4 Marc # oblier de push git
+-- devoir 4 Marc oblier de push git
 USE library;
 
 -- exercise 1 (Obtenir la liste des auteurs dont l’éditeur « Harmattan » n’a publié aucun livre)
