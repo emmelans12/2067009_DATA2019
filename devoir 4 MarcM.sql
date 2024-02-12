@@ -4,12 +4,11 @@ USE library;
 -- exercise 1 (Obtenir la liste des auteurs dont l’éditeur « Harmattan » n’a publié aucun livre)
 
 SELECT a.au_fname 
-from authors as a 
-where a.au_id  not in (
+FROM authors AS a 
+WHERE a.au_id  NOT IN (
     SELECT distinct a.au_id
     FROM authors as a 
-    INNER JOIN
-    library.titleauthor AS ta, library.titles AS t, library.publishers AS p 
+    INNER JOIN library.titleauthor AS ta, library.titles AS t, library.publishers AS p 
     WHERE ta.au_id = a.au_id AND t.pub_id = p.pub_id AND p.pub_name = "Harmattan");
 
 -- Exercise 2 (Obtenir la liste des auteurs dont l’éditeur «Eyrolles » a publié tous les livres)
