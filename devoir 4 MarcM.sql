@@ -12,6 +12,7 @@ WHERE NOT EXISTS (
     WHERE p.pub_name = 'Harmattan' AND a.au_id = ta.au_id
 );
 
+
 -- Exercise 2 (Obtenir la liste des auteurs dont l’éditeur «Eyrolles » a publié tous les livres)
 
 SELECT DISTINCT
