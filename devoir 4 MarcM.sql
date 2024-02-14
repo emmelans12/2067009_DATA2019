@@ -3,13 +3,13 @@ USE library;
 
 -- exercise 1 (Obtenir la liste des auteurs dont l’éditeur « Harmattan » n’a publié aucun livre)
 
-SELECT a.au_fname 
-FROM authors AS a 
-WHERE a.au_id  NOT IN (
-    SELECT distinct a.au_id
-    FROM authors as a 
-    INNER JOIN library.titleauthor AS ta, library.titles AS t, library.publishers AS p 
-    WHERE ta.au_id = a.au_id AND t.pub_id = p.pub_id AND p.pub_name = "Harmattan");
+SELECT DISTINCT a.au_id, a.au_fname, a.au_lname
+FROM authors a
+LEFT JOIN titleauthor ta ON a.au_id = ta.au_id
+LEFT JOIN titles t ON ta.title_id = t.title_id
+LEFT JOIN publishers p ON t.pub_id = p.pub_id
+WHERE p.pub_name IS NULL OR p.pub_name != 'Harmattan';
+
 
 -- Exercise 2 (Obtenir la liste des auteurs dont l’éditeur «Eyrolles » a publié tous les livres)
 
