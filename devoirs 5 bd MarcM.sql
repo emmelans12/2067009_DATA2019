@@ -1,4 +1,4 @@
--- devoirs 5 MarcM
+-- devoirs 5 MarcM*
 USE bookstore;
 
 DROP TABLE IF EXISTS Sales;
