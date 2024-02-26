@@ -22,6 +22,7 @@ JOIN OrderLine ol ON ol.order_id = o.id
 JOIN product p ON p.id = ol.product_id
 WHERE u.full_name = 'Oumar Moussa';
 
+
 -- 3.  Quel sont les noms de produits dont le fournisseur est basé à Moncton ? (25points)
 
 SELECT p.name AS NomProduit
